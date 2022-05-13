@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Functional</title>
+  </head>
+  <body>
+    <ul id="instruct">
+      <h1>Higher-Order Functions</h1>
+
+      <li>
+        <h3>Challenge 1</h3>
+
+        Create a function <code>addTwo</code> that accepts one input and adds 2
+        to it.
+      </li>
+
+      <li>
+        <h3>Challenge 2</h3>
+
+        Create a function <code>addS</code> that accepts one input and adds an
+        "s" to it.
+      </li>
+
+      <li>
+        <h3>Challenge 3</h3>
+        Create a function called <code>map</code> that takes two inputs:<br />
+        <ol>
+          <li>an array of numbers (a list of numbers)</li>
+          <li>
+            a 'callback' function - a function that is applied to each element
+            of the array (inside of the function 'map')
+          </li>
+        </ol>
+
+        Have <code>map</code> return a new array filled with numbers that are
+        the result of using the 'callback' function on each element of the input
+        array.<br />
+        <!--
+  map([1,2,3,4,5], multiplyByTwo); //-> [2,4,6,8,10]
+  multiplyByTwo(1); //-> 2
+  multiplyByTwo(2); //-> 4
+-->
+        <pre
+          style="color: #000000; background: #ccc"
+        >map<span style="color:#808030; ">(</span><span style="color:#808030; ">[</span><span style="color:#008c00; ">1</span><span style="color:#808030; ">,</span><span style="color:#008c00; ">2</span><span style="color:#808030; ">,</span><span style="color:#008c00; ">3</span><span style="color:#808030; ">,</span><span style="color:#008c00; ">4</span><span style="color:#808030; ">,</span><span style="color:#008c00; ">5</span><span style="color:#808030; ">]</span><span style="color:#808030; ">,</span> multiplyByTwo<span style="color:#808030; ">)</span><span style="color:#800080; ">;</span> <span style="color:#696969; ">//-&gt; [2,4,6,8,10]</span><br>multiplyByTwo<span style="color:#808030; ">(</span><span style="color:#008c00; ">1</span><span style="color:#808030; ">)</span><span style="color:#800080; ">;</span> <span style="color:#696969; ">//-&gt; 2</span><br>multiplyByTwo<span style="color:#808030; ">(</span><span style="color:#008c00; ">2</span><span style="color:#808030; ">)</span><span style="color:#800080; ">;</span> <span style="color:#696969; ">//-&gt; 4</span>
+</pre>
+      </li>
+
+      <li>
+        <h3>Challenge 4</h3>
+
+        The function <code>forEach</code> takes an array and a callback, and
+        runs the callback on each element of the array.
+        <code>forEach</code> does not return anything.
+
+        <!--
+  let alphabet = '';
+  const letters = ['a', 'b', 'c', 'd'];
+  forEach(letters, char => alphabet += char);
+  console.log(alphabet);   //prints 'abcd'
+-->
+        <pre
+          style="color: #000000; background: #ccc"
+        ><span style="color:#800000; font-weight:bold; ">let</span> alphabet <span style="color:#808030; ">=</span> <span style="color:#800000; ">'</span><span style="color:#800000; ">'</span><span style="color:#800080; ">;</span>
+<span style="color:#800000; font-weight:bold; ">const</span> letters <span style="color:#808030; ">=</span> <span style="color:#808030; ">[</span><span style="color:#800000; ">'</span><span style="color:#0000e6; ">a</span><span style="color:#800000; ">'</span><span style="color:#808030; ">,</span> <span style="color:#800000; ">'</span><span style="color:#0000e6; ">b</span><span style="color:#800000; ">'</span><span style="color:#808030; ">,</span> <span style="color:#800000; ">'</span><span style="color:#0000e6; ">c</span><span style="color:#800000; ">'</span><span style="color:#808030; ">,</span> <span style="color:#800000; ">'</span><span style="color:#0000e6; ">d</span><span style="color:#800000; ">'</span><span style="color:#808030; ">]</span><span style="color:#800080; ">;</span>
+forEach<span style="color:#808030; ">(</span>letters<span style="color:#808030; ">,</span> <span style="color:#800000; font-weight:bold; "></span><span style="color:#808030; "></span><span style="color:#800000; font-weight:bold; ">char</span><span style="color:#808030; "></span> =&gt; <span style="color:#800080; "></span>alphabet <span style="color:#808030; ">+=</span> <span style="color:#800000; font-weight:bold; ">char</span><span style="color:#800080; "></span><span style="color:#800080; "></span><span style="color:#808030; ">)</span><span style="color:#800080; ">;</span>
+console<span style="color:#808030; ">.</span><span style="color:#800000; font-weight:bold; ">log</span><span style="color:#808030; ">(</span>alphabet<span style="color:#808030; ">)</span><span style="color:#800080; ">;</span>   <span style="color:#696969; ">//prints 'abcd'</span>
+</pre>
+      </li>
+
+      <li>
+        <h3>Challenge 5</h3>
+
+        For this challenge, you're going to rebuild <code>map</code> as
+        <code>mapWith</code>. This time you're going to use
+        <code>forEach</code> inside of <code>mapWith</code> instead of using a
+        <code>for</code> loop.
+      </li>
+
+      <li>
+        <h3>Challenge 6</h3>
+
+        The function <code>reduce</code> takes an array and reduces the elements
+        to a single value. For example it can sum all the numbers, multiply
+        them, or any operation that you can put into a function.
+
+        <!--
+  const nums = [4, 1, 3];
+  const add = function(a, b) { return a + b; }
+  reduce(nums, add, 0);   //-> 8
+-->
+        <pre
+          style="color: #000000; background: #ccc"
+        ><span style="color:#800000; font-weight:bold; ">const</span> nums <span style="color:#808030; ">=</span> <span style="color:#808030; ">[</span><span style="color:#008c00; ">4</span><span style="color:#808030; ">,</span> <span style="color:#008c00; ">1</span><span style="color:#808030; ">,</span> <span style="color:#008c00; ">3</span><span style="color:#808030; ">]</span><span style="color:#800080; ">;</span>
+<span style="color:#800000; font-weight:bold; ">const</span> add <span style="color:#808030; ">=</span> <span style="color:#800000; font-weight:bold; "></span><span style="color:#808030; ">(</span>a<span style="color:#808030; ">,</span> b<span style="color:#808030; ">)</span> <span style="color:#800080; ">=&gt;</span> <span style="color:#800000; font-weight:bold; "></span>a <span style="color:#808030; ">+</span> b<span style="color:#800080; ">;</span> <span style="color:#800080; "></span>
+reduce<span style="color:#808030; ">(</span>nums<span style="color:#808030; ">,</span> add<span style="color:#808030; ">,</span> <span style="color:#008c00; ">0</span><span style="color:#808030; ">)</span><span style="color:#800080; ">;</span>   <span style="color:#696969; ">//-&gt; 8</span>
+</pre>
+
+        Here's how it works. The function has an "accumulator value" which
+        starts as the <code>initialValue</code> and accumulates the output of
+        each loop. The array is iterated over, passing the accumulator and the
+        next array element as arguments to the <code>callback</code>. The
+        callback's return value becomes the new accumulator value. The next loop
+        executes with this new accumulator value. In the example above, the
+        accumulator begins at 0. <code>add(0,4)</code> is called. The
+        accumulator's value is now 4. Then <code>add(4, 1)</code> to make it 5.
+        Finally <code>add(5, 3)</code>
+        brings it to 8, which is returned.
+      </li>
+
+      <li>
+        <h3>Challenge 7</h3>
+
+        Construct a function <code>intersection</code> that compares input
+        arrays and returns a new array with elements found in all of the inputs.
+        BONUS: Use reduce!
+
+        <!-- console.log(intersection([5, 10, 15, 20, 10], [15, 88, 1, 5, 7], [1, 10, 15, 5, 20]));
+should log: [15, 5] -->
+      </li>
+
+      <li>
+        <h3>Challenge 8</h3>
+
+        Construct a function <code>union</code> that compares input arrays and
+        returns a new array that contains all elements. If there are duplicate
+        elements, only add it once to the new array. Preserve the order of the
+        elements starting from the first element of the first input array.
+        BONUS: Use reduce!
+
+        <!-- console.log(union([5, 10, 15, 5], [15, 88, 1, 5, 7], [100, 15, 10, 1, 5])); should log: [5, 10, 15, 88, 1, 7, 100] -->
+      </li>
+
+      <li>
+        <h3>Challenge 9</h3>
+
+        Construct a function <code>objOfMatches</code> that accepts two arrays
+        and a callback. <code>objOfMatches</code> will build an object and
+        return it. To build the object, <code>objOfMatches</code> will test each
+        element of the first array using the callback to see if the output
+        matches the corresponding element (by index) of the second array. If
+        there is a match, the element from the first array becomes a key in an
+        object, and the element from the second array becomes the corresponding
+        value.
+
+        <!-- console.log(objOfMatches(['hi', 'howdy', 'bye', 'later', 'hello'], ['HI', 'Howdy', 'BYE', 'LATER', 'hello'], function(str) { return str.toUpperCase(); })); should log: { hi: 'HI', bye: 'BYE', later: 'LATER' } -->
+      </li>
+
+      <li>
+        <h3>Challenge 10</h3>
+
+        Construct a function <code>multiMap</code> that will accept two arrays:
+        an array of values and an array of callbacks. <code>multiMap</code> will
+        return an object whose keys match the elements in the array of values.
+        The corresponding values that are assigned to the keys will be arrays
+        consisting of outputs from the array of callbacks, where the input to
+        each callback is the key.
+
+        <!-- console.log(['catfood', 'glue', 'beer'], [function(str) { return str.toUpperCase(); }, function(str) { return str[0].toUpperCase() + str.slice(1).toLowerCase(); }, function(str) { return str + str; }]);
+should log: { catfood: ['CATFOOD', 'Catfood', 'catfoodcatfood'], glue: ['GLUE', 'Glue', 'glueglue'], beer: ['BEER', 'Beer', 'beerbeer'] } -->
+      </li>
+
+      <li>
+        <h3>Challenge 11</h3>
+
+        Create a function <code>commutative</code> that accepts two callbacks
+        and a value. <code>commutative</code> will return a boolean indicating
+        if the passing the value into the first function, and then passing the
+        resulting output into the second function, yields the same output as the
+        same operation with the order of the functions reversed (passing the
+        value into the second function, and then passing the output into the
+        first function).
+      </li>
+
+      <li>
+        <h3>Challenge 12</h3>
+
+        Create a function <code>objFilter</code> that accepts an object and a
+        callback. <code>objFilter</code> should make a new object, and then
+        iterate through the passed-in object, using each key as input for the
+        callback. If the output from the callback is equal to the corresponding
+        value, then that key-value pair is copied into the new object.
+        <code>objFilter</code> will return this new object.
+      </li>
+
+      <li>
+        <h3>Challenge 13</h3>
+
+        Create a function <code>rating</code> that accepts an array (of
+        functions) and a value. All the functions in the array will return
+        <code>true</code> or <code>false</code>. <code>rating</code> should
+        return the percentage of functions from the array that return
+        <code>true</code> when the value is used as input.
+      </li>
+
+      <li>
+        <h3>Challenge 14</h3>
+
+        Create a function <code>pipe</code> that accepts an array (of functions)
+        and a value. <code>pipe</code> should input the value into the first
+        function in the array, and then use the output from that function as
+        input for the second function, and then use the output from that
+        function as input for the third function, and so forth, until we have an
+        output from the last function in the array. <code>pipe</code> should
+        return the final output.
+      </li>
+
+      <li>
+        <h3>Challenge 15</h3>
+
+        Create a function <code>highestFunc</code> that accepts an object (which
+        will contain functions) and a subject (which is any value).
+        <code>highestFunc</code> should return the key of the object whose
+        associated value (which will be a function) returns the largest number,
+        when the subject is given as input.
+      </li>
+
+      <h1>Closure</h1>
+
+      <li>
+        <h3>Challenge 1</h3>
+
+        Create a function <code>createFunction</code> that creates and returns a
+        function. When that created function is called, it should print "hello".
+        <!--
+  const function1 = createFunction();
+  // now we are going to call the function we just created
+  function1(); //should console.log('hello');
+-->
+        <pre
+          style="color: #000000; background: #ddd"
+        ><span style="color:#800000; font-weight:bold; ">const</span> function1 <span style="color:#808030; ">=</span> createFunction<span style="color:#808030; ">(</span><span style="color:#808030; ">)</span><span style="color:#800080; ">;</span><br><span style="color:#696969; ">// now we'll call the function we just created</span><br>function1<span style="color:#808030; ">(</span><span style="color:#808030; ">)</span><span style="color:#800080; ">;</span> <span style="color:#696969; ">//should console.log('hello');</span>
+</pre>
+
+        When you think you completed createFunction, un-comment out those lines
+        in the code and run it to see if it works.
+      </li>
+
+      <li>
+        <h3>Challenge 2</h3>
+        Create a function <code>createFunctionPrinter</code> that accepts one
+        input and returns a function. When that created function is called, it
+        should print out the input that was used when the function was created.
+
+        <!--
+  const printSample = createFunctionPrinter('sample');
+  const printHello = createFunctionPrinter('hello')
+  // now we'll call the functions we just created
+  printSample(); //should console.log('sample');
+  printHello(); //should console.log('hello');
+-->
+        <pre
+          style="color: #000000; background: #ddd"
+        ><span style="color:#800000; font-weight:bold; ">const</span> printSample <span style="color:#808030; ">=</span> createFunctionPrinter<span style="color:#808030; ">(</span><span style="color:#800000; ">'</span><span style="color:#0000e6; ">sample</span><span style="color:#800000; ">'</span><span style="color:#808030; ">)</span><span style="color:#800080; ">;</span>
+<span style="color:#800000; font-weight:bold; ">const</span> printHello <span style="color:#808030; ">=</span> createFunctionPrinter<span style="color:#808030; ">(</span><span style="color:#800000; ">'</span><span style="color:#0000e6; ">hello</span><span style="color:#800000; ">'</span><span style="color:#808030; ">)</span>
+<span style="color:#696969; ">// now we'll call the functions we just created</span>
+printSample<span style="color:#808030; ">(</span><span style="color:#808030; ">)</span><span style="color:#800080; ">;</span> <span style="color:#696969; ">//should console.log('sample');</span>
+printHello<span style="color:#808030; ">(</span><span style="color:#808030; ">)</span><span style="color:#800080; ">;</span> <span style="color:#696969; ">//should console.log('hello');</span>
+</pre>
+      </li>
+
+      <li>
+        <h3>Challenge 3</h3>
+
+        Examine the code for the <code>outer</code> function. Notice that we are
+        returning a function and that function is using variables that are
+        outside of its scope.<br />
+        Uncomment those lines of code. Try to deduce the output before
+        executing.
+      </li>
+
+      <li>
+        <h3>Challenge 4</h3>
+        Now we are going to create a function <code>addByX</code> that returns a
+        function that will add an input by <code>x</code>.
+        <!--
+  const addByTwo = addByX(2);
+  addByTwo(1); //should return 3
+  addByTwo(2); //should return 4
+  addByTwo(3); //should return 5
+
+  const addByThree = addByX(3);
+  addByThree(1); //should return 4
+  addByThree(2); //should return 5
+
+  const addByFour = addByX(4);
+  addByFour(4); //should return 8
+  addByFour(5); //should return 9
+-->
+        <pre
+          style="color: #000000; background: #ddd"
+        ><span style="color:#800000; font-weight:bold; ">const</span> addByTwo <span style="color:#808030; ">=</span> addByX<span style="color:#808030; ">(</span><span style="color:#008c00; ">2</span><span style="color:#808030; ">)</span><span style="color:#800080; ">;</span>
+addByTwo<span style="color:#808030; ">(</span><span style="color:#008c00; ">1</span><span style="color:#808030; ">)</span><span style="color:#800080; ">;</span> <span style="color:#696969; ">//should return 3</span>
+addByTwo<span style="color:#808030; ">(</span><span style="color:#008c00; ">2</span><span style="color:#808030; ">)</span><span style="color:#800080; ">;</span> <span style="color:#696969; ">//should return 4</span>
+addByTwo<span style="color:#808030; ">(</span><span style="color:#008c00; ">3</span><span style="color:#808030; ">)</span><span style="color:#800080; ">;</span> <span style="color:#696969; ">//should return 5</span>
+
+<span style="color:#800000; font-weight:bold; ">const</span> addByThree <span style="color:#808030; ">=</span> addByX<span style="color:#808030; ">(</span><span style="color:#008c00; ">3</span><span style="color:#808030; ">)</span><span style="color:#800080; ">;</span>
+addByThree<span style="color:#808030; ">(</span><span style="color:#008c00; ">1</span><span style="color:#808030; ">)</span><span style="color:#800080; ">;</span> <span style="color:#696969; ">//should return 4</span>
+addByThree<span style="color:#808030; ">(</span><span style="color:#008c00; ">2</span><span style="color:#808030; ">)</span><span style="color:#800080; ">;</span> <span style="color:#696969; ">//should return 5</span>
+
+<span style="color:#800000; font-weight:bold; ">const</span> addByFour <span style="color:#808030; ">=</span> addByX<span style="color:#808030; ">(</span><span style="color:#008c00; ">4</span><span style="color:#808030; ">)</span><span style="color:#800080; ">;</span>
+addByFour<span style="color:#808030; ">(</span><span style="color:#008c00; ">4</span><span style="color:#808030; ">)</span><span style="color:#800080; ">;</span> <span style="color:#696969; ">//should return 8</span>
+addByFour<span style="color:#808030; ">(</span><span style="color:#008c00; ">10</span><span style="color:#808030; ">)</span><span style="color:#800080; ">;</span> <span style="color:#696969; ">//should return 14</span>
+</pre>
+      </li>
+
+      <li>
+        <h3>Challenge 5</h3>
+
+        Write a function <code>once</code> that accepts a callback as input and
+        returns a function. When the returned function is called the first time,
+        it should call the callback and return that output. If it is called any
+        additional times, instead of calling the callback again it will simply
+        return the output value from the first time it was called.
+      </li>
+
+      <!-- // returns a function that will only be run after first being called count times
+// let called = function() { console.log('hello') };
+// let afterCalled = after(3, called);
+// afterCalled(); -> nothing is printed
+// afterCalled(); -> nothing is printed
+// afterCalled(); -> 'hello is printed' -->
+
+      <li>
+        <h3>Challenge 6</h3>
+
+        Write a function <code>after</code> that takes the number of times the
+        callback needs to be called before being executed as the first parameter
+        and the callback as the second parameter.
+      </li>
+
+      <li>
+        <h3>Challenge 7</h3>
+
+        Write a function <code>delay</code> that accepts a callback as the first
+        parameter and the wait in milliseconds before allowing the callback to
+        be invoked as the second parameter. Any additional arguments after wait
+        are provided to func when it is invoked. HINT: research setTimeout();
+      </li>
+
+      <li>
+        <h3>Challenge 8</h3>
+
+        Create a function <code>russianRoulette</code> that accepts a number
+        (let us call it <code>n</code>), and returns a function. The returned
+        function will take no arguments, and will return the string 'click' the
+        first <code>n - 1</code> number of times it is invoked. On the very next
+        invocation (the <code>nth</code>
+        invocation), the returned function will return the string 'bang'. On
+        every invocation after that, the returned function returns the string
+        'reload to play again'.
+      </li>
+
+      <li>
+        <h3>Challenge 9</h3>
+
+        Create a function <code>average</code> that accepts no arguments, and
+        returns a function (that will accept either a number as its lone
+        argument, or no arguments at all). When the returned function is invoked
+        with a number, the output should be average of all the numbers have ever
+        been passed into that function (duplicate numbers count just like any
+        other number). When the returned function is invoked with no arguments,
+        the current average is outputted. If the returned function is invoked
+        with no arguments before any numbers are passed in, then it should
+        return 0.
+      </li>
+
+      <li>
+        <h3>Challenge 10</h3>
+
+        Create a function <code>makeFuncTester</code> that accepts an array (of
+        two-element sub-arrays), and returns a function (that will accept a
+        callback). The returned function should return <code>true</code> if the
+        first elements (of each sub-array) being passed into the callback all
+        yield the corresponding second elements (of the same sub-array).
+        Otherwise, the returned function should return <code>false</code>.
+      </li>
+
+      <li>
+        <h3>Challenge 11</h3>
+
+        Create a function <code>makeHistory</code> that accepts a number (which
+        will serve as a limit), and returns a function (that will accept a
+        string). The returned function will save a history of the most recent
+        "limit" number of strings passed into the returned function (one per
+        invocation only). Every time a string is passed into the function, the
+        function should return that same string with the word 'done' after it
+        (separated by a space). However, if the string 'undo' is passed into the
+        function, then the function should delete the last action saved in the
+        history, and return that delted string with the word 'undone' after
+        (separated by a space). If 'undo' is passed into the function and the
+        function's history is empty, then the function should return the string
+        'nothing to undo'.
+      </li>
+
+      <li>
+        <h3>Challenge 12</h3>
+
+        <p>
+          <b
+            >Inspect the commented out test cases carefully if you need help to
+            understand these instructions.</b
+          >
+        </p>
+        Create a function <code>blackjack</code> that accepts an array (which
+        will contain numbers ranging from 1 through 11), and returns a DEALER
+        function. The DEALER function will take two arguments (both numbers),
+        and then return yet ANOTHER function, which we will call the PLAYER
+        function.
+        <p>
+          On the FIRST invocation of the PLAYER function, it will return the sum
+          of the two numbers passed into the DEALER function.
+        </p>
+        <p>
+          On the SECOND invocation of the PLAYER function, it will return
+          either:
+        </p>
+        <ol>
+          <li>
+            the first number in the array that was passed into
+            <code>blackjack</code> PLUS the sum of the two numbers passed in as
+            arguments into the DEALER function, IF that sum is 21 or below, OR
+          </li>
+          <li>the string 'bust' if that sum is over 21.</li>
+        </ol>
+        <br />
+        If it is 'bust', then every invocation of the PLAYER function AFTER THAT
+        will return the string 'you are done!' (but unlike 'bust', the 'you are
+        done!' output will NOT use a number in the array). If it is NOT 'bust',
+        then the next invocation of the PLAYER function will return either:
+        <br /><br />
+        <ol>
+          <li>
+            the most recent sum plus the next number in the array (a new sum) if
+            that new sum is 21 or less, OR
+          </li>
+          <li>the string 'bust' if the new sum is over 21.</li>
+        </ol>
+        <br />
+        And again, if it is 'bust', then every subsequent invocation of the
+        PLAYER function will return the string 'you are done!'. Otherwise, it
+        can continue on to give the next sum with the next number in the array,
+        and so forth.
+        <p>
+          You may assume that the given array is long enough to give a 'bust'
+          before running out of numbers.
+        </p>
+        <p>
+          BONUS: Implement <code>blackjack</code> so the DEALER function can
+          return more PLAYER functions that will each continue to take the next
+          number in the array after the previous PLAYER function left off. You
+          will just need to make sure the array has enough numbers for all the
+          PLAYER functions.
+        </p>
+      </li>
+
+      <h1>Extension Challenges</h1>
+
+      <li>
+        <h3>Challenge 1</h3>
+
+        Create a function <code>functionValidator</code> that accepts an array
+        of functions and two different values (let's call them
+        <code>input</code> and <code>output</code>). This function should return
+        a new array containing *only* the functions from the original array
+        that, when invoked with <code>input</code>, return the value
+        <code>output</code>. Use reduce!
+      </li>
+
+      <li>
+        <h3>Challenge 2</h3>
+
+        Create a function <code>allClear</code> that accepts an array of
+        evaluator functions (each returning a boolean value), and a single
+        value. Using reduce, return a single boolean value indicating whether
+        the value "passes" every single one of the evaluator functions (i.e.
+        returns true).
+      </li>
+
+      <li>
+        <h3>Challenge 3</h3>
+
+        Write a function <code>numSelectString</code> that accepts an array of
+        numbers and returns a string. This function should use filter, sort, and
+        reduce to return a string containing only the odd numbers from the
+        array, separated by commas, in ascending order.
+      </li>
+      <li></li>
+      <li>
+        <h3>Challenge 4</h3>
+
+        Write a function <code>movieSelector</code> that accepts an array of
+        objects containing movie information (id, title, and score). Chain
+        together invocations of map, filter AND reduce to return an array
+        containing only movies with a score greater than 5. The titles should be
+        all uppercase strings.
+      </li>
+      <li>
+        <h3>Challenge 5</h3>
+
+        Create a function <code>curriedAddThreeNums</code> that adds three
+        numbers together when run thrice in succession as follows:
+
+        <pre
+          style="color: #000000; background: #ddd"
+        >curriedAddThreeNums(1)(3)(7) <span style="color:#696969; ">//should return 10</span></pre>
+      </li>
+
+      <li>
+        <h3>Challenge 6</h3>
+        Use partial application with your previously-defined
+        <code>curriedAddThreeNums</code> to create a new function
+        <code>curriedAddTwoNumsToFive</code> that when run twice in succession,
+        adds two numbers to five as follows:
+
+        <pre
+          style="color: #000000; background: #ddd"
+        >curriedAddTwoNumsToFive(6)(7) <span style="color:#696969; ">//should return 18</span></pre>
+      </li>
+    </ul>
+    <script src="./functional.js"></script>
+  </body>
+</html>
