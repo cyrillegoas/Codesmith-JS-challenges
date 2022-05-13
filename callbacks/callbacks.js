@@ -2,7 +2,7 @@ console.log('Hello, world!');
 
 // Challenge 1
 function addTwo(num) {
-
+  return num + 2;
 }
 
 // To check if you've completed it, uncomment these console.logs!
@@ -12,7 +12,7 @@ function addTwo(num) {
 
 // Challenge 2
 function addS(word) {
-
+	return `${word}s`
 }
 
 // uncomment these to check your work
@@ -22,7 +22,11 @@ function addS(word) {
 
 // Challenge 3
 function map(array, callback) {
-
+	const newArray = [];
+  for(let i=0; i < array.length; i++){
+    newArray.push(callback(array[i]));
+  }
+  return newArray;
 }
 
 // console.log(map([1, 2, 3], addTwo));
@@ -30,7 +34,9 @@ function map(array, callback) {
 
 // Challenge 4
 function forEach(array, callback) {
-
+	for(let i=0; i < array.length; i++){
+   	callback(array[i]);
+  }
 }
 
 // see for yourself if your forEach works!
@@ -38,19 +44,25 @@ function forEach(array, callback) {
 
 // Challenge 5
 function mapWith(array, callback) {
-
+	const newArray = [];
+  forEach(array, el=> newArray.push(callback(el)));	
+  return newArray;
 }
-
 
 // Challenge 6
 function reduce(array, callback, initialValue) {
-
+	let acc = initialValue;
+  forEach(array, el=> {acc = callback(acc,el)});
+  return acc;
 }
+// console.log(reduce([1, 2, 3],(acc,x)=>acc+x,0));
 
 
 // Challenge 7
 function intersection(arrays) {
-
+	return arrays.reduce((acc,item)=>{
+    return item.filter(el=> acc.includes(el))
+  })
 }
 
 // console.log(intersection([[5, 10, 15, 20], [15, 88, 1, 5, 7], [1, 10, 15, 5, 20]]));
@@ -59,16 +71,23 @@ function intersection(arrays) {
 
 // Challenge 8
 function union(arrays) {
-
+	return arrays.reduce((acc,item)=>{
+    item.forEach(el=>{
+      if(!acc.includes(el))acc.push(el);
+    })
+    return acc;
+  },[])
 }
-
 // console.log(union([[5, 10, 15], [15, 88, 1, 5, 7], [100, 15, 10, 1, 5]]));
 // should log: [5, 10, 15, 88, 1, 7, 100]
 
 
 // Challenge 9
 function objOfMatches(array1, array2, callback) {
-
+	return array1.reduce((acc,item,index)=>{
+    if(callback(item)=== array2[index])acc[item]=array2[index];
+    return acc;
+  },{})
 }
 
 // console.log(objOfMatches(['hi', 'howdy', 'bye', 'later', 'hello'], ['HI', 'Howdy', 'BYE', 'LATER', 'hello'], function(str) { return str.toUpperCase(); }));
@@ -77,7 +96,10 @@ function objOfMatches(array1, array2, callback) {
 
 // Challenge 10
 function multiMap(arrVals, arrCallbacks) {
-
+  return arrVals.reduce((acc,val)=>{
+    acc[val]= arrCallbacks.map(fn=>fn(val))
+    return acc;
+  },{})
 }
 
 // console.log(multiMap(['catfood', 'glue', 'beer'], [function(str) { return str.toUpperCase(); }, function(str) { return str[0].toUpperCase() + str.slice(1).toLowerCase(); }, function(str) { return str + str; }]));
@@ -86,7 +108,11 @@ function multiMap(arrVals, arrCallbacks) {
 
 // Challenge 11
 function objectFilter(obj, callback) {
-
+  const newObj = {};
+  for(let key in obj){
+    if(obj[key]===callback(key)) newObj[key]=obj[key];
+  }
+  return newObj;
 }
 
 // const cities = {
@@ -99,7 +125,8 @@ function objectFilter(obj, callback) {
 
 // Challenge 12
 function majority(array, callback) {
-
+	let trueCount = array.reduce((acc,el)=>callback(el)?++acc:acc,0);
+  return (trueCount > Math.floor(array.length/2));
 }
 
 // /*** Uncomment these to check your work! ***/
@@ -110,18 +137,26 @@ function majority(array, callback) {
 
 // Challenge 13
 function prioritize(array, callback) {
-
+	return array.reduce((acc,item)=>{
+	if(callback(item))acc.unshift(item);
+	else acc.push(item);
+	return acc;
+	},[])
 }
 
 // /*** Uncomment these to check your work! ***/
 // const startsWithS = function(str) { return str[0] === 's' || str[0] === 'S'; };
-// console.log(prioritize(['curb', 'rickandmorty', 'seinfeld', 'sunny', 'friends'], startsWithS)); // should log:
-['seinfeld', 'sunny', 'curb', 'rickandmorty', 'friends']
+// console.log(prioritize(['curb', 'rickandmorty', 'seinfeld', 'sunny', 'friends'], startsWithS));
+//should log:['seinfeld', 'sunny', 'curb', 'rickandmorty', 'friends']
 
 
 // Challenge 14
 function countBy(array, callback) {
-
+	return array.reduce((acc,item)=>{
+    const result = callback(item);
+    acc[result] = acc[result]? ++acc[result] : 1;
+    return acc;
+  },{})
 }
 
 // /*** Uncomment these to check your work! ***/
@@ -133,7 +168,12 @@ function countBy(array, callback) {
 
 // Challenge 15
 function groupBy(array, callback) {
-
+  return array.reduce((acc,item)=>{
+  	const result = callback(item);
+    if(acc[result])acc[result].push(item);
+		else acc[result] = [result];
+  	return acc;
+  },{})
 }
 
 // /*** Uncomment these to check your work! ***/
@@ -144,7 +184,11 @@ function groupBy(array, callback) {
 
 // Challenge 16
 function goodKeys(obj, callback) {
-
+	return Object.keys(obj).reduce((acc,key)=>{
+    console.log(key);
+    if(callback(obj[key]))acc.push(key);
+    return acc;
+  },[])
 }
 
 // /*** Uncomment these to check your work! ***/
@@ -155,7 +199,7 @@ function goodKeys(obj, callback) {
 
 // Challenge 17
 function commutative(func1, func2, value) {
-
+	return (func1(func2(value)))===(func2(func1(value)));
 }
 
 // /*** Uncomment these to check your work! ***/
@@ -169,7 +213,10 @@ function commutative(func1, func2, value) {
 
 // Challenge 18
 function objFilter(obj, callback) {
-
+	return Object.keys(obj).reduce((acc,key)=>{
+    if(callback(key)===obj[key])acc[key]=obj[key];
+    return acc;
+  },{})
 }
 
 // /*** Uncomment these to check your work! ***/
@@ -183,7 +230,7 @@ function objFilter(obj, callback) {
 
 // Challenge 19
 function rating(arrOfFuncs, value) {
-
+	
 }
 
 // /*** Uncomment these to check your work! ***/
